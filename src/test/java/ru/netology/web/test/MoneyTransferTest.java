@@ -13,14 +13,14 @@ import static ru.netology.web.data.DataHelper.*;
 
 
 public class MoneyTransferTest {
-    DashboardPage dashboardPage = new DashboardPage();
+    DashboardPage dashboardPage;
 
     @BeforeEach
     void setUp() {
         val loginPage = open("http://localhost:9999", LoginPage.class);
         val verificationPage = loginPage.validLogin(DataHelper.getAuthInfo());
         val verificationCode = DataHelper.getVerificationCodeFor();
-        verificationPage.validVerify(verificationCode);
+        dashboardPage = verificationPage.validVerify(verificationCode);
     }
 
     @Test
